@@ -39,7 +39,7 @@ contract MultiWordConsumer is ChainlinkClient {
         uint256 payment = 1 * 10**18;
         Chainlink.Request memory req = buildChainlinkRequest(specId, address(this), this.fulfillMultipleParameters.selector);
         req.addUint("times", 10000);
-        requestOracleData(req, payment);
+        sendChainlinkRequest(req, payment);
     }
 
     event RequestMultipleFulfilled(bytes32 indexed requestId, uint256 indexed usd, uint256 indexed eur, uint256 jpy);
